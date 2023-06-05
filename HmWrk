@@ -28,6 +28,135 @@ Use ThreadPoolExecutor and ProcessPoolExecutor to create different concurrent im
 
 Compare the results and performance of each of them.
 
+
+L35Multiprocessing_Prime.py
+
+import math
+from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+
+NUMBERS = [
+    2,  # prime
+    1099726899285419,
+    1570341764013157,  # prime
+    1637027521802551,  # prime
+    1880450821379411,  # prime
+    1893530391196711,  # prime
+    2447109360961063,  # prime
+    3,  # prime
+    2772290760589219,  # prime
+    3033700317376073,  # prime
+    4350190374376723,
+    4350190491008389,  # prime
+    4350190491008390,
+    4350222956688319,
+    2447120421950803,
+    5,  # prime
+]
+
+
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+
+def filter_primes_threadpool(numbers):
+    with ThreadPoolExecutor() as executor:
+        return list(executor.map(is_prime, numbers))
+
+
+def filter_primes_processpool(numbers):
+    with ProcessPoolExecutor() as executor:
+        return list(executor.map(is_prime, numbers))
+
+
+# Test the implementations and compare results and performance
+if __name__ == "__main__":
+    # Filter primes using ThreadPoolExecutor
+    threadpool_results = filter_primes_threadpool(NUMBERS)
+    print("Filter Primes using ThreadPoolExecutor:")
+    for number, is_prime_result in zip(NUMBERS, threadpool_results):
+        print(f"{number}: {'Prime' if is_prime_result else 'Not Prime'}")
+
+    print()
+
+    # Filter primes using ProcessPoolExecutor
+    processpool_results = filter_primes_processpool(NUMBERS)
+    print("Filter Primes using ProcessPoolExecutor:")
+    for number, is_prime_result in zip(NUMBERS, processpool_results):
+        print(f"{number}: {'Prime' if is_prime_result else 'Not Prime'}")
+        
+#консоль         
+#Filter Primes using ThreadPoolExecutor: 
+
+#2: Prime
+
+#1099726899285419: Not a Prime number
+
+#1570341764013157: Prime
+
+#1637027521802551: Prime
+
+#1880450821379411: Prime
+
+#1893530391196711: Prime
+
+#2447109360961063: Prime
+
+#3: Prime
+
+#2772290760589219: Prime
+
+#3033700317376073: Prime
+
+#4350190374376723: Not a Prime number
+
+#4350190491008389: Prime
+
+#4350190491008390: Not a Prime number
+
+#4350222956688319: Not a Prime number
+
+#2447120421950803: Not a Prime number
+
+#5: Prime
+
+#Filter Primes using ProcessPoolExecutor:
+
+#2: Prime
+
+#1099726899285419: Not Prime
+
+#1570341764013157: Prime
+
+#1637027521802551: Prime
+
+#1880450821379411: Prime
+
+#1893530391196711: Prime
+
+#2447109360961063: Prime
+
+#3: Prime
+
+#2772290760589219: Prime
+
+#3033700317376073: Prime
+
+#4350190374376723: Not Prime
+
+#4350190491008389: Prime
+
+#4350190491008390: Not Prime
+
+#4350222956688319: Not Prime
+
+#2447120421950803: Not Prime
+
+#5: Prime
  
 
 Task 2
