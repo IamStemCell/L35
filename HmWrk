@@ -33,6 +33,7 @@ L35Multiprocessing_Prime.py
 
 import math
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor
+import time
 
 NUMBERS = [
     2,  # prime
@@ -75,20 +76,29 @@ def filter_primes_processpool(numbers):
 
 # Test the implementations and compare results and performance
 if __name__ == "__main__":
+
     # Filter primes using ThreadPoolExecutor
+    start = time.perf_counter()
+    
     threadpool_results = filter_primes_threadpool(NUMBERS)
     print("Filter Primes using ThreadPoolExecutor:")
     for number, is_prime_result in zip(NUMBERS, threadpool_results):
         print(f"{number}: {'Prime' if is_prime_result else 'Not Prime'}")
-
+    end = time.perf_counter()
+    print(f"filtering primes using ThreadPoolExecutor takes : {end-start} seconds")
     print()
 
     # Filter primes using ProcessPoolExecutor
+    start = time.perf_counter()
+    
     processpool_results = filter_primes_processpool(NUMBERS)
     print("Filter Primes using ProcessPoolExecutor:")
     for number, is_prime_result in zip(NUMBERS, processpool_results):
         print(f"{number}: {'Prime' if is_prime_result else 'Not Prime'}")
         
+    end = time.perf_counter()
+    print(f"filtering primes using ProcessPoolExecutor takes: {end-start} seconds")
+    
 #консоль         
 #Filter Primes using ThreadPoolExecutor: 
 
