@@ -1,6 +1,6 @@
-Task 1
+#Task 1
 
-Primes
+#Primes
 
 NUMBERS = [
    2,  # prime
@@ -20,13 +20,12 @@ NUMBERS = [
    2447120421950803,
    5,  # prime
 ]
-We have the following input list of numbers, some of them are prime. You need to create a utility function that takes as input a number and returns a bool, whether it is prime or not.
+#We have the following input list of numbers, some of them are prime. 
+#You need to create a utility function that takes as input a number and returns a bool, whether it is prime or not.
 
- 
+#Use ThreadPoolExecutor and ProcessPoolExecutor to create different concurrent implementations for filtering NUMBERS. 
 
-Use ThreadPoolExecutor and ProcessPoolExecutor to create different concurrent implementations for filtering NUMBERS. 
-
-Compare the results and performance of each of them.
+#Compare the results and performance of each of them.
 
 
 L35Multiprocessing_Prime.py
@@ -172,7 +171,7 @@ if __name__ == "__main__":
 #5: Prime
  
 # filtering primes using ProcessPoolExecutor takes: 29.187382863001403 seconds 
-#висновок :   ProcessPoolExecutor швидший за ThreadPoolExecutor.
+#висновок :  performance ProcessPoolExecutor швидший за ThreadPoolExecutor.
 
 Task 2
 
