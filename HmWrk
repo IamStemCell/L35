@@ -134,6 +134,9 @@ if __name__ == "__main__":
 
 #5: Prime
 
+
+#filtering primes using ThreadPoolExecutor takes: 82.4498958050026 seconds 
+
 #Filter Primes using ProcessPoolExecutor:
 
 #2: Prime
@@ -168,6 +171,8 @@ if __name__ == "__main__":
 
 #5: Prime
  
+# filtering primes using ProcessPoolExecutor takes: 29.187382863001403 seconds 
+#висновок :   ProcessPoolExecutor швидший за ThreadPoolExecutor.
 
 Task 2
 
